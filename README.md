@@ -285,8 +285,8 @@ See [`.env.example`](.env.example) for complete configuration options.
 ## 📚 Documentation
 
 - **[Setup Guide](SETUP.md)** — Complete installation and configuration
-- **[API Reference](API.md)** — Endpoint specifications and examples
-- **[Contributing](CONTRIBUTING.md)** — Development guidelines
+- **[Deployment Guide](DEPLOYMENT.md)** — Free deployment to Vercel + Railway
+- **API Reference** — Visit `/docs` endpoint for interactive Swagger documentation
 
 ---
 
@@ -310,33 +310,40 @@ All 60 API endpoints are tested and validated. Frontend builds without TypeScrip
 
 ## 🚢 Deployment
 
-### Backend (Railway / Render)
-1. Connect GitHub repository
-2. Set environment variables from `.env.example`
-3. Deploy with Python 3.11+ runtime
-4. Run migrations: `alembic upgrade head`
+### 🎉 **Deploy for FREE in 10 minutes!**
 
-### Frontend (Vercel)
-1. Connect GitHub repository
-2. Set `NEXT_PUBLIC_API_URL` to production backend
-3. Deploy with Node.js 18+ runtime
+We've created a complete deployment guide for **Vercel (Frontend) + Railway (Backend)**:
 
-### Database (Supabase / PostgreSQL)
-1. Create PostgreSQL database
-2. Update `DATABASE_URL` in `.env`
-3. Run migrations to create tables
+📖 **[Full Deployment Guide](DEPLOYMENT.md)** — Complete setup in 10 minutes
 
-See [SETUP.md](SETUP.md) for detailed deployment instructions.
+**Quick Start:**
+1. Push code to GitHub
+2. Deploy backend to **Railway** (includes PostgreSQL + Redis)
+3. Deploy frontend to **Vercel** 
+4. Configure environment variables
+5. You're live! 🚀
+
+**Cost:** $0-5/month (free tier available)
+
+**Included:**
+- ✅ Automated CI/CD from GitHub
+- ✅ SSL certificates
+- ✅ Database & Redis hosting
+- ✅ CDN & global deployment
+- ✅ Monitoring & logs
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions.
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
-- Code style guidelines
-- Pull request process
-- Development workflow
-- Testing requirements
+Contributions are welcome! To contribute:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 

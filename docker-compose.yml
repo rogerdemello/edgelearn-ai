@@ -1,4 +1,6 @@
-# Uses project root .env (edgelearn-ai/.env) for all services
+# Local Development Database Services Only
+# Uses project root .env (edgelearn-ai/.env)
+# For deployment, use Railway/Vercel (no Docker needed)
 version: '3.8'
 
 services:
@@ -30,22 +32,10 @@ services:
       timeout: 5s
       retries: 5
 
-  backend:
-    build: ./backend
-    env_file: .env
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/edgelearn
-      REDIS_URL: redis://redis:6379/0
-      HOST: 0.0.0.0
-      PORT: 8000
-    ports:
-      - "8000:8000"
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-
 volumes:
   postgres_data:
   redis_data:
+
+# Note: Run backend and frontend locally with:
+# Backend: cd backend && uvicorn main:app --reload
+# Frontend: cd frontend && pnpm dev

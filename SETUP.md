@@ -16,7 +16,7 @@ git clone <repository-url>
 cd edgelearn-ai
 ```
 
-## Step 2: Environment (single .env for backend, frontend, and Docker)
+## Step 2: Environment (single .env for backend, frontend, and local databases)
 
 Create one `.env` at the **project root** (edgelearn-ai/). Backend and frontend both use it.
 
@@ -146,9 +146,10 @@ DATABASE_URL=sqlite:///./edgelearn.db
    DATABASE_URL=postgresql://postgres.xxx:password@aws-0-region.pooler.supabase.com:6543/postgres
    ```
 
-### Local PostgreSQL (Docker)
+### Local PostgreSQL (Optional - for local development)
 
 ```bash
+# Start PostgreSQL with docker-compose (for local dev only)
 docker-compose up -d postgres
 ```
 
