@@ -17,5 +17,12 @@ services:
         value: False
       - key: CORS_ORIGINS
         sync: false
-      - key: OPENAI_API_KEY
+      # Azure OpenAI (Recommended)
+      - key: AZURE_OPENAI_ENDPOINT
+        sync: false
+      - key: AZURE_OPENAI_API_KEY
+        sync: false
+      - key: AZURE_OPENAI_API_VERSION
+        value: 2024-12-01-preview
+      - key: AZURE_OPENAI_DEPLOYMENT
         sync: false

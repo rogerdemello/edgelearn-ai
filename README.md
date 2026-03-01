@@ -151,7 +151,7 @@ edgelearn-ai/
 
 ### Backend
 - **Framework:** FastAPI 0.115+
-- **Database:** SQLAlchemy ORM with SQLite (development) / PostgreSQL (production)
+- **Database:** SQLAlchemy ORM with SQLite (development) / Supabase PostgreSQL (production)
 - **Authentication:** JWT tokens with python-jose
 - **AI Integration:** OpenAI GPT-4 / Azure OpenAI
 - **Password Hashing:** bcrypt 4.0+
@@ -237,12 +237,14 @@ DATABASE_URL=sqlite:///./edgelearn.db
 SECRET_KEY=your-secret-key-min-32-chars
 ACCESS_TOKEN_EXPIRE_MINUTES=10080
 
-# AI Service (choose one)
-OPENAI_API_KEY=sk-...                      # OpenAI
-# OR
-AZURE_OPENAI_ENDPOINT=https://...          # Azure OpenAI
-AZURE_OPENAI_API_KEY=...
+# AI Service - Azure OpenAI (Recommended)
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-azure-openai-key
+AZURE_OPENAI_API_VERSION=2024-12-01-preview
 AZURE_OPENAI_DEPLOYMENT=gpt-4o
+
+# Alternative: Regular OpenAI (if not using Azure)
+# OPENAI_API_KEY=sk-...
 
 # Server
 DEBUG=True
@@ -278,14 +280,16 @@ See [`.env.example`](.env.example) for complete configuration options.
 - **Multilingual Support:** Serve diverse student populations
 - **Data-Driven Insights:** Institutional dashboards for decision-making
 - **Academic Integrity:** Built-in originality checks and citation tools
-- **Scalable Architecture:** SQLite → PostgreSQL migration path
+- **Scalable Architecture:** SQLite → Supabase PostgreSQL migration path
 
 ---
 
 ## 📚 Documentation
 
 - **[Setup Guide](SETUP.md)** — Complete installation and configuration
-- **[Deployment Guide](DEPLOYMENT.md)** — Free deployment to Vercel + Railway
+- **[Deployment Guide](DEPLOYMENT.md)** — Free deployment to Vercel + Render + Supabase
+- **[Render Step-by-Step](RENDER_DEPLOYMENT.md)** — Detailed backend deployment guide
+- **[Vercel Step-by-Step](VERCEL_DEPLOYMENT.md)** — Detailed frontend deployment guide
 - **API Reference** — Visit `/docs` endpoint for interactive Swagger documentation
 
 ---
@@ -312,23 +316,24 @@ All 60 API endpoints are tested and validated. Frontend builds without TypeScrip
 
 ### 🎉 **Deploy for FREE in 10 minutes!**
 
-We've created a complete deployment guide for **Vercel (Frontend) + Railway (Backend)**:
+We've created a complete deployment guide for **Vercel (Frontend) + Render (Backend) + Supabase (Database)**:
 
 📖 **[Full Deployment Guide](DEPLOYMENT.md)** — Complete setup in 10 minutes
 
 **Quick Start:**
 1. Push code to GitHub
-2. Deploy backend to **Railway** (includes PostgreSQL + Redis)
-3. Deploy frontend to **Vercel** 
+2. Create **Supabase** database (free PostgreSQL)
+3. Deploy backend to **Render**
+4. Deploy frontend to **Vercel** 
 4. Configure environment variables
 5. You're live! 🚀
 
-**Cost:** $0-5/month (free tier available)
+**Cost:** $0/month (free tier available)
 
 **Included:**
 - ✅ Automated CI/CD from GitHub
 - ✅ SSL certificates
-- ✅ Database & Redis hosting
+- ✅ Managed PostgreSQL database (Supabase)
 - ✅ CDN & global deployment
 - ✅ Monitoring & logs
 

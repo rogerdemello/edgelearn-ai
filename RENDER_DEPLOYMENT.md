@@ -10,6 +10,52 @@ Deploy your EdgeLearn AI backend to Render for free in 10 minutes.
 - [ ] Render account ([Sign up free at render.com](https://render.com))
 - [ ] Supabase database created ([See DEPLOYMENT.md](DEPLOYMENT.md#1%EF%B8%8F⃣-create-supabase-database-3-minutes))
 - [ ] Supabase DATABASE_URL ready with **port 6543**
+- [ ] **Azure OpenAI** credentials (recommended for AI features)
+
+---
+
+## 🤖 Get Azure OpenAI Credentials (Recommended - 5 minutes)
+
+Azure OpenAI provides enterprise-grade AI with better compliance and reliability.
+
+### Step-by-Step Setup:
+
+1. **Go to Azure Portal**
+   - Visit: [portal.azure.com](https://portal.azure.com)
+   - Sign in with your Azure account
+
+2. **Create Azure OpenAI Resource**
+   - Click **"Create a resource"**
+   - Search for **"Azure OpenAI"**
+   - Click **"Create"**
+   - Fill in:
+     - **Subscription:** Your Azure subscription
+     - **Resource group:** Create new or use existing
+     - **Region:** Choose closest to you (e.g., East US, West Europe)
+     - **Name:** e.g., `edgelearn-openai`
+     - **Pricing tier:** Standard S0
+   - Click **"Review + create"** → **"Create"**
+   - Wait 2-3 minutes for deployment
+
+3. **Deploy a Model**
+   - Open your Azure OpenAI resource
+   - Click **"Model deployments"** → **"Manage Deployments"**
+   - Opens Azure OpenAI Studio
+   - Click **"Create new deployment"**
+   - Select:
+     - **Model:** gpt-4o (or gpt-4-turbo)
+     - **Deployment name:** `gpt-4o` (remember this!)
+   - Click **"Create"**
+
+4. **Get Your Credentials**
+   - Go back to Azure Portal → Your OpenAI resource
+   - Click **"Keys and Endpoint"** (left sidebar)
+   - Copy these values:
+     ```
+     ENDPOINT: https://your-resource-name.openai.azure.com/
+     KEY 1: xxx...xxx (your API key)
+     ```
+   - **Save these** - you'll need them in Step 4 below
 
 ---
 
@@ -111,12 +157,31 @@ False
 http://localhost:3000,http://localhost:3001
 ```
 
-#### Optional Variables:
+#### Optional but Recommended - Azure OpenAI:
 
-**OPENAI_API_KEY** (Only if using AI features)
+**AZURE_OPENAI_ENDPOINT**
 ```
-sk-your-openai-api-key-here
+https://your-resource-name.openai.azure.com/
 ```
+Get from: Azure Portal → Your Azure OpenAI Resource → Keys and Endpoint
+
+**AZURE_OPENAI_API_KEY**
+```
+your-azure-openai-key-here
+```
+Get from: Azure Portal → Your Azure OpenAI Resource → Keys and Endpoint → KEY 1
+
+**AZURE_OPENAI_API_VERSION**
+```
+2024-12-01-preview
+```
+(Already set in render.yaml, no need to add manually)
+
+**AZURE_OPENAI_DEPLOYMENT**
+```
+gpt-4o
+```
+Your Azure OpenAI deployment name (e.g., gpt-4o, gpt-4-turbo, etc.)
 
 ---
 

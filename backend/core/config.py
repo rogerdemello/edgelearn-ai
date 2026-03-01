@@ -25,16 +25,13 @@ class Settings(BaseSettings):
     # Database Configuration
     # Option 1: SQLite (default - no setup needed, perfect for development)
     #   DATABASE_URL=sqlite:///./edgelearn.db
-    # Option 2: Supabase PostgreSQL (cloud database)
-    #   DATABASE_URL=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres
-    # Option 3: Local PostgreSQL (requires Docker or local install)
+    # Option 2: Supabase PostgreSQL (recommended for production - free tier available)
+    #   Get from: Supabase Dashboard > Settings > Database > Connection string (URI)
+    #   Use Session mode (port 6543) for connection pooling with Render/Vercel/serverless
+    #   DATABASE_URL=postgresql://postgres.[ref]:[password]@db.xxxxx.supabase.co:6543/postgres
+    # Option 3: Local PostgreSQL (requires docker-compose or local install)
     #   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/edgelearn
-    # Option 4: Other cloud providers (Railway, Neon, etc.)
-    #   DATABASE_URL=postgresql://user:pass@host:port/dbname
     DATABASE_URL: str = "sqlite:///./edgelearn.db"  # Default to SQLite for easy setup
-    
-    # Redis
-    REDIS_URL: str = "redis://localhost:6379/0"
     
     # CORS: keep as str so pydantic-settings does not try to JSON-decode it from .env
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:3001,https://edgelearn-ai.vercel.app"
@@ -48,14 +45,14 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
-    # OpenAI (regular)
-    OPENAI_API_KEY: str = ""
-    
-    # Azure OpenAI (optional - takes precedence if configured)
+    # Azure OpenAI (Recommended - Enterprise-grade, better compliance)
     AZURE_OPENAI_ENDPOINT: str = ""
     AZURE_OPENAI_API_KEY: str = ""
     AZURE_OPENAI_API_VERSION: str = "2024-12-01-preview"
     AZURE_OPENAI_DEPLOYMENT: str = "gpt-4o"
+    
+    # OpenAI (Alternative - only if not using Azure)
+    OPENAI_API_KEY: str = ""
     
     # AI Model settings
     GPT_MODEL: str = "gpt-4-turbo-preview"  # Used for regular OpenAI

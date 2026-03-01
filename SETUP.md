@@ -7,7 +7,7 @@ Complete setup instructions for EdgeLearn AI development environment.
 - **Python 3.11+** - [Download](https://www.python.org/downloads/)
 - **Node.js 18+** - [Download](https://nodejs.org/)
 - **Git** - [Download](https://git-scm.com/)
-- **OpenAI API Key** - [Get one](https://platform.openai.com/api-keys)
+- **Azure OpenAI** (Recommended) - [Setup Guide](https://portal.azure.com) or **OpenAI API Key** - [Get one](https://platform.openai.com/api-keys)
 
 ## Step 1: Clone Repository
 
@@ -27,8 +27,13 @@ cp .env.example .env
 
 Edit `.env` and set at least:
 - `SECRET_KEY` – change to a random string (min 32 chars) for production
-- `OPENAI_API_KEY` – optional; leave empty for stub AI responses
+- `AZURE_OPENAI_ENDPOINT` – your Azure OpenAI endpoint (recommended)
+- `AZURE_OPENAI_API_KEY` – your Azure OpenAI key
+- `AZURE_OPENAI_DEPLOYMENT` – your deployment name (e.g., gpt-4o)
 - `NEXT_PUBLIC_API_URL` – backend URL (default `http://localhost:8000`)
+
+Alternatively, use regular OpenAI:
+- `OPENAI_API_KEY` – optional; leave empty for stub AI responses
 
 Do not commit `.env`; it is gitignored.
 
