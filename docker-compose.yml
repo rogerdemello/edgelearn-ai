@@ -1,6 +1,6 @@
-# Local Development Database Services Only
+# Local Development Database (Optional)
 # Uses project root .env (edgelearn-ai/.env)
-# For deployment, use Railway/Vercel (no Docker needed)
+# For deployment, use Supabase PostgreSQL
 version: '3.8'
 
 services:
@@ -20,22 +20,11 @@ services:
       timeout: 5s
       retries: 5
 
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
 volumes:
   postgres_data:
-  redis_data:
 
 # Note: Run backend and frontend locally with:
 # Backend: cd backend && uvicorn main:app --reload
 # Frontend: cd frontend && pnpm dev
+#
+# For production, use Supabase PostgreSQL (free tier available)

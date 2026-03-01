@@ -93,3 +93,4 @@ htmlcov/
 .turbo
 .vercel
 
+YOUR_SUPABASE_CONFIG.md
